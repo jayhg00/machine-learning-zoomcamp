@@ -11,3 +11,10 @@
   - adjusted R-squared manual compute `1 - (1 - R²) * ((n - 1) / (n - p - 1)) where R²: is the standard R-squared value obtained from sklearn.metrics.r2_score.
 n: is the number of observations (data points) in your dataset.
 p: is the number of independent variables (features) in your model.`
+
+- **Performance metrics for Classification Models**
+  - Accuracy , `from sklearn.metrics import accuracy_score`
+  - Precision, `from sklearn.metrics import precision_score`
+  - Recall, `from sklearn.metrics import recall_score`
+  - F1-score, `from sklearn.metrics import f1_score`
+  - AUC-ROC `from sklearn.metrics import roc_auc_score`

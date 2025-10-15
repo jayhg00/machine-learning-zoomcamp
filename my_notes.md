@@ -18,3 +18,11 @@ p: is the number of independent variables (features) in your model.`
   - Recall, `from sklearn.metrics import recall_score`. Lies between 0 & 1
   - F1-score, `from sklearn.metrics import f1_score`. harmonic mean of precision and recall `2PR/(P+R)` . Lies between 0 & 1
   - AUC-ROC `from sklearn.metrics import roc_auc_score`. Lies between 0 & 1
+
+# **ML Project Key Stages**
+- Data Collection
+- EDA (Handle missing values, wrong values, outliers, imbalanced dataset, One-hot encoding)
+- Feature Engineering/Selection (Select a few of the top most important features as Predictors using Correlation. Remove Multicollinear features)
+- Train, validate different models with hyper parameter tunings & evaluate the metrics. Select the best model from this.
+- Pickle the model & expose as API
+- Deploy

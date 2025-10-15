@@ -28,4 +28,4 @@ __pycache__/
 **samples/
 
 # Specific files
-my_notes.md
+./my_notes.md

@@ -21,8 +21,15 @@ p: is the number of independent variables (features) in your model.`
 
 # **ML Project Key Stages**
 - Data Collection
-- EDA (Handle missing values, wrong values, outliers, imbalanced dataset, One-hot encoding)
+- Exploratory Data analysis (EDA) to clean up data
+    - Handle missing values,
+    - wrong values,
+    - outliers,
+    - imbalanced dataset,
+    - One-hot encoding
 - Feature Engineering/Selection (Select a few of the top most important features as Predictors using Correlation. Remove Multicollinear features)
+    - To quantify how importantly a **NUMERICAL feature** impacts the target, get the **CORRELATION SCORE between each numerical feature & target**
+    - To quantify how importantly a **CATEGORICAL feature** impacts the target, get the **MUTUAL INFORMATION SCORE between each categorical feature & target**
 - Train, validate different models with hyper parameter tunings & evaluate the metrics. Select the best model from this.
 - Pickle the model & expose as API
 - Deploy

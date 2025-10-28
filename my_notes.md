@@ -27,9 +27,9 @@ p: is the number of independent variables (features) in your model.`
     - outliers,
     - imbalanced dataset,
     - One-hot encoding
-- Feature Engineering/Selection (Select a few of the top most important features as Predictors using Correlation. Remove Multicollinear features)
-    - To quantify how importantly a **NUMERICAL feature** impacts the target, get the **CORRELATION SCORE between each numerical feature & target**
-    - To quantify how importantly a **CATEGORICAL feature** impacts the target, get the **MUTUAL INFORMATION SCORE between each categorical feature & target**
+- Feature Engineering/Selection (Select a few of the top most **important** features as Predictors using Correlation. Remove Multicollinear features)
+    - To quantify how importantly a **NUMERICAL feature** impacts the target, get the **CORRELATION SCORE between each numerical feature & target**. Higher the score, more important the feature
+    - To quantify how importantly a **CATEGORICAL feature** impacts the target, get the **MUTUAL INFORMATION SCORE between each categorical feature & target**. Higher the score, more important the feature
 - Train, validate different models with hyper parameter tunings & evaluate the metrics. Select the best model from this.
 - Pickle the model & expose as API
 - Deploy

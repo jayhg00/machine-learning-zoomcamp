@@ -33,3 +33,45 @@ p: is the number of independent variables (features) in your model.`
 - Train, validate different models with hyper parameter tunings & evaluate the metrics. Select the best model from this.
 - Pickle the model & expose as API
 - Deploy
+
+### Handling missing values (NaN or blank) ###
+- If the no of rows with missing values << total no of rows, then those rows can be dropped without losing much information using `df.dropna()`. Else, IMPUTE (compute & replace) the missing values
+  - For NUMERICAL features, impute with Mean, Median Or Some Constant as per suitable use-case
+  - For CATEGORICAL features, impute with Mode (Most Frequent) or Some Constant as per suitable use-case
+
+```Python
+from sklearn.impute import SimpleImputer
+import numpy as np
+import pandas as pd
+
+# Sample data with missing values
+data = pd.DataFrame({
+    'numerical_feature': [1, 2, np.nan, 4, 5],
+    'categorical_feature': ['A', 'B', 'A', np.nan, 'C']
+})
+
+# Impute numerical feature with the mean
+imputer_numerical = SimpleImputer(strategy='mean')
+data['numerical_feature'] = imputer_numerical.fit_transform(data[['numerical_feature']])
+
+# Impute categorical feature with the most frequent value
+imputer_categorical = SimpleImputer(strategy='most_frequent')
+data['categorical_feature'] = imputer_categorical.fit_transform(data[['categorical_feature']])
+
+print(data)
+```
+
+### Handling Imbalanced datasets ###
+For a Classification problem, an Imbalanced dataset is one where one of the classes for Target is in majority than the other. Example, in a dataset for Churn Prediction with 1000 rows, the Target has 900 rows with "No Churn" and 100 rows with "Churn".  
+Ways to solve -
+1. Random UPSAMPLING the Minority class - creates new samples for the Minority class by duplicating existing samples. There will then be 900 rows for "No Churn" & 900 rows for "Churn". But, due to duplicates, it can cause Overfitting and so not preferred
+2. Random DOWNSAMPLING the MAJORITY class - There will then be 100 rows for "No Churn" & 100 rows for "Churn" [NOT RECOMMENDED DUE TO INFORMATION LOSS]
+3. **Synthetic Minority OverSampling Technique SMOTE** - constructs new samples by interpolating between existing minority-class samples. There will then be 900 rows for "No Churn" & 900 rows for "Churn"
+  ```Python
+   from imblearn.over_sampling import SMOTE
+   smote = SMOTE(random_state=42)
+   X_resampled, y_resampled = smote.fit_resample(X, y)
+  ```
+5. Evaluate models using metrics that account for imbalance like **AUC Score**
+6. **Use ensemble models like Random Forest or Boosting which inherently handle imbalances**
+

@@ -75,3 +75,12 @@ Ways to solve -
 5. Evaluate models using metrics that account for imbalance like **AUC Score**
 6. **Use ensemble models like Random Forest or Boosting which inherently handle imbalances**
 
+### Data encoding Categorical features ###
+Encoding means assigning numerical value to Categorical value
+#### One hot encoding ####
+- Create new feature column for each value of Categorical feature and put "1" in respective columns and 0 in other columns. For color=RED|BLUE|GREEN, 3 new columns color_RED, color_BLUE, color_GREEN created and populated with 1 and 0
+- If there are lot of possible values, then that many new columns will get created. So, avoid in such scenario
+
+#### Label encoding Or Ordinal Encoding ####
+- Simply replace the Categorical value with constant numerical value. RED=1, BLUE=2, GREEN=3.
+- Here, the model may incorrectly treat GREEN to be more important than RED. So, use this for category where the numbers can reperesent the importance like Degree = HighSchool|Bachelors|Masters|PHD where HighSchool = 1, Bachelors = 2, Masters = 3, PHD = 4

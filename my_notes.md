@@ -84,3 +84,10 @@ Encoding means assigning numerical value to Categorical value
 #### Label encoding Or Ordinal Encoding ####
 - Simply replace the Categorical value with constant numerical value. RED=1, BLUE=2, GREEN=3.
 - Here, the model may incorrectly treat GREEN to be more important than RED. So, use this for category where the numbers can reperesent the importance like Degree = HighSchool|Bachelors|Masters|PHD where HighSchool = 1, Bachelors = 2, Masters = 3, PHD = 4
+
+### Ridge Regression ###
+When to choose ridge regression 
+- When multicollinearity is present: Ridge regression is designed to handle situations where independent variables are highly correlated, which can make ordinary least squares (OLS) regression unstable and produce large, unreliable coefficients.
+- To reduce overfitting: It adds a penalty term that shrinks coefficients toward zero, preventing them from becoming too large and making the model less sensitive to noise in the training data.
+- When all predictors are important: If you expect most of your features to have some predictive power, ridge regression is a good choice because it keeps all predictors in the model, albeit with reduced influence.
+- When you have more predictors than observations: Ridge regression can provide a stable solution in cases where \(n<p\) (where \(n\) is the number of observations and \(p\) is the number of predictors), unlike OLS which may not have a unique solution. 

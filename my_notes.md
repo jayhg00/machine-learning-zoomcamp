@@ -85,9 +85,35 @@ Encoding means assigning numerical value to Categorical value
 - Simply replace the Categorical value with constant numerical value. RED=1, BLUE=2, GREEN=3.
 - Here, the model may incorrectly treat GREEN to be more important than RED. So, use this for category where the numbers can reperesent the importance like Degree = HighSchool|Bachelors|Masters|PHD where HighSchool = 1, Bachelors = 2, Masters = 3, PHD = 4
 
-### Ridge Regression ###
+### Ridge Regression (L2 Regularization) ###
+**To reduce overfitting**
 When to choose ridge regression 
 - When multicollinearity is present: Ridge regression is designed to handle situations where independent variables are highly correlated, which can make ordinary least squares (OLS) regression unstable and produce large, unreliable coefficients.
-- To reduce overfitting: It adds a penalty term that shrinks coefficients toward zero, preventing them from becoming too large and making the model less sensitive to noise in the training data.
+- To reduce overfitting: It adds a penalty term (lambda * coeff^2) that shrinks coefficients toward zero, preventing them from becoming too large and making the model less sensitive to noise in the training data.
 - When all predictors are important: If you expect most of your features to have some predictive power, ridge regression is a good choice because it keeps all predictors in the model, albeit with reduced influence.
-- When you have more predictors than observations: Ridge regression can provide a stable solution in cases where \(n<p\) (where \(n\) is the number of observations and \(p\) is the number of predictors), unlike OLS which may not have a unique solution. 
+- When you have more predictors than observations: Ridge regression can provide a stable solution in cases where \(n<p\) (where \(n\) is the number of observations and \(p\) is the number of predictors), unlike OLS which may not have a unique solution.
+
+### Lasso (Least Absolute Shrinkage and Selection Operator) Regression L1 Regularization ###
+**To perform feature selection**
+- Adds penalty term (lamdba * abs(coeff)) that forces some coefficients to become exactly zero meaning the features with zero coeff do not have any role in the target variable and such features can be dropped from the model ==> Enables feature selection
+
+Use Lasso when
+- When you have a high number of features, and you suspect many of them are not important for the prediction.
+- To automatically select the most relevant features from a large dataset.
+- When dealing with multicollinearity (high correlation between predictor variables).
+
+### ElasticNet Regression (Lasso L1 + Ridge L2) ###
+- Combines benefits of Lasso & Ridge to do feature selection & to reduce overfitting.
+- Adds penalty terms of both Lasso (lambda * abs(coeff)) + Ridge (lambda * coeff^2)
+- In sklearn's ElasticNet,
+    - "alpha" controls overall regularization strength (higher alpha --> higher shrinkage).
+    - "l1-ratio" Controls the balance between the L1 and L2 penalties
+        - 0 => Ridge regression
+        - 1 => Lasso
+        - 0<val<1 ==> Hybrid
+
+When to use
+- High-dimensional data: When the number of features is greater than the number of samples. 
+- Correlated features: When you have a group of highly correlated predictors. (high multi-collinearity)
+- Feature selection and regularization: When you want to perform both feature selection and regularize the model's coefficients simultaneously. 
+

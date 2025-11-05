@@ -13,7 +13,7 @@ n: is the number of observations (data points) in your dataset.
 p: is the number of independent variables (features) in your model.`
 
 - **Performance metrics for Classification Models**
-  - Accuracy , `from sklearn.metrics import accuracy_score`. Lies between 0 & 1
+  - Accuracy, (TP+TN)/(TP+FP+TN+FN) `from sklearn.metrics import accuracy_score`. Lies between 0 & 1
   - Precision, TP/(TP+FP) `from sklearn.metrics import precision_score`. Lies between 0 & 1
   - Recall, TP/(TP+FN) `from sklearn.metrics import recall_score`. Lies between 0 & 1
   - F1-score, `from sklearn.metrics import f1_score`. harmonic mean of precision and recall `2PR/(P+R)` . Lies between 0 & 1

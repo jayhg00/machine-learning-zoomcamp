@@ -85,7 +85,7 @@ Encoding means assigning numerical value to Categorical value
 - Simply replace the Categorical value with constant numerical value. RED=1, BLUE=2, GREEN=3.
 - Here, the model may incorrectly treat GREEN to be more important than RED. So, use this for category where the numbers can reperesent the importance like Degree = HighSchool|Bachelors|Masters|PHD where HighSchool = 1, Bachelors = 2, Masters = 3, PHD = 4
 
-### ML Steps ###
+## ML Steps ##
 1. Split the dataset into Training & Test using `train_test_split()` to get X_train, X_test, y_train, y_test. Keep aside the X_test, y_test as we don't want the model to know anything about the test data
 2. Perform EDA on X_train, y_train by using `.fit_transform(X_train)` methods of applicable operations. Eg: Imputation, One-hot Encoding etc
 3. Apply the EDA operations on the X_test, y_test using `.transform(X_test)` methods of applicable operations.
@@ -126,3 +126,43 @@ When to use
 - Correlated features: When you have a group of highly correlated predictors. (high multi-collinearity)
 - Feature selection and regularization: When you want to perform both feature selection and regularize the model's coefficients simultaneously. 
 
+## Hyperparameter Tuning ##
+Hyperparameters are the parameters that are set before the machine learning model training process begins. You set these hyperparameters when instantiating the model variable or after instantiation
+
+`sklearn.linear_model.LogisticRegression(penalty='l2', *, dual=False, tol=0.0001, C=1.0, fit_intercept=True, intercept_scaling=1, class_weight=None, random_state=None, solver='lbfgs', max_iter=100, multi_class='deprecated', verbose=0, warm_start=False, n_jobs=None, l1_ratio=None)`
+For Logistic Regression, all the arguments are hyperparameters
+
+Tuning means to determine the combination of parameter values which will give best score of the model for a given dataset.
+
+### GridSearchCV ###
+Defines a "grid" of hyperparameter values. For each hyperparameter that you want to tune, you specify a list of potential values to test. GridSearchCV then exhaustively tries every possible combination of these specified values.
+Process-
+- You define a machine learning model (estimator).
+- You create a dictionary (param_grid) where keys are hyperparameter names and values are lists of values to test for each hyperparameter.
+- You initialize GridSearchCV with the estimator, param_grid, and a scoring metric (e.g., accuracy, F1-score).
+- You fit the GridSearchCV object to your training data.
+- After fitting, GridSearchCV identifies the hyperparameter combination that yielded the best performance based on the chosen scoring metric and cross-validation results.
+- Output: GridSearchCV.best_params_ (the optimal hyperparameter combination) and best_score_ (the best performance achieved) found during the search. You can then use these optimal parameters to train your final model on the entire training dataset.
+
+```Python
+# Set the model and the hyperparameters of interest to tune
+model=LogisticRegression()
+penalty=['l1', 'l2', 'elasticnet']
+c_values=[100,10,1.0,0.1,0.01]
+solver=['newton-cg', 'lbfgs', 'liblinear', 'sag', 'saga']
+
+# Create Params dictionary
+params=dict(penalty=penalty,C=c_values,solver=solver)
+
+# Tune using GridSearchCV
+from sklearn.model_selection import GridSearchCV
+grid=GridSearchCV(estimator=model,param_grid=params,scoring='accuracy',n_jobs=-1)
+grid.fit(X_train,y_train)
+
+grid.best_params_ ## {'C': 0.01, 'penalty': 'l1', 'solver': 'saga'}
+grid.best_score_ ## 0.9242857142857142
+
+# Predict using the tuned hyperparameters
+y_pred=grid.predict(X_test)
+score=accuracy_score(y_pred,y_test) ## 0.92
+```

@@ -85,6 +85,15 @@ Encoding means assigning numerical value to Categorical value
 - Simply replace the Categorical value with constant numerical value. RED=1, BLUE=2, GREEN=3.
 - Here, the model may incorrectly treat GREEN to be more important than RED. So, use this for category where the numbers can reperesent the importance like Degree = HighSchool|Bachelors|Masters|PHD where HighSchool = 1, Bachelors = 2, Masters = 3, PHD = 4
 
+### ML Steps ###
+1. Split the dataset into Training & Test using `train_test_split()` to get X_train, X_test, y_train, y_test. Keep aside the X_test, y_test as we don't want the model to know anything about the test data
+2. Perform EDA on X_train, y_train by using `.fit_transform(X_train)` methods of applicable operations. Eg: Imputation, One-hot Encoding etc
+3. Apply the EDA operations on the X_test, y_test using `.transform(X_test)` methods of applicable operations.
+4. Train the model on X_train, y_train using `model.fit(X_train, y_train)`
+5. Make predictions on X_test using `y_pred=model.predict(X_test)`
+6. Evaluate metrics of the model on y_pred, y_test using appropriate scores (accuracy, auc etc)
+
+
 ### Ridge Regression (L2 Regularization) ###
 **To reduce overfitting**
 When to choose ridge regression 

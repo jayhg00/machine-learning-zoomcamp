@@ -166,3 +166,27 @@ grid.best_score_ ## 0.9242857142857142
 y_pred=grid.predict(X_test)
 score=accuracy_score(y_pred,y_test) ## 0.92
 ```
+### RandomizedSearchCV ###
+Instead of trying every single possible combination like GridSearchCV, RandomizedSearchCV randomly selects a specified number of parameter combinations. Useful when hyperparameter search space is large and an exhaustive search is computationally infeasible or time-consuming.
+```Python
+# Set the model and the hyperparameters of interest to tune
+model=LogisticRegression()
+penalty=['l1', 'l2', 'elasticnet']
+c_values=[100,10,1.0,0.1,0.01]
+solver=['newton-cg', 'lbfgs', 'liblinear', 'sag', 'saga']
+
+# Create Params dictionary
+params=dict(penalty=penalty,C=c_values,solver=solver)
+
+# tune using RandomizedSearchCV
+from sklearn.model_selection import RandomizedSearchCV
+randomcv=RandomizedSearchCV(estimator=model,param_distributions=params,cv=5,scoring='accuracy')
+randomcv.fit(X_train,y_train)
+
+randomcv.best_score_ ## 0.9128571428571428
+randomcv.best_params_ ## {'solver': 'saga', 'penalty': 'l2', 'C': 100}
+
+# Predict using the tuned hyperparameters
+y_pred=randomcv.predict(X_test)
+score=accuracy_score(y_pred,y_test) ## 0.9166
+```

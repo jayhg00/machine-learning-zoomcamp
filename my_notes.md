@@ -190,3 +190,17 @@ randomcv.best_params_ ## {'solver': 'saga', 'penalty': 'l2', 'C': 100}
 y_pred=randomcv.predict(X_test)
 score=accuracy_score(y_pred,y_test) ## 0.9166
 ```
+
+## Support Vector Machines ##
+- Used for both Regression (Support Vector Regression SVR) & Classification (Support Vector Classification) tasks.
+- Useful to find best fit curve/decision boundary in overlapping/linearly non-separable data points (Linear Regression or Logistic Regression will not give good results)
+- **Concept**: Does this by transforming the linearly non-separable data points from n-dimension space to (n+1)-dimension space where the points become linearly separable. In (n+1)-dimension space, there is clear separation of data points and so best fit line/curve is found which is re-transfomed to n-dimension space.
+  - Example - points on a 1-dimension number line (x) is transformed to a 2-dimension plot (x-y) using function y=x^2. Best fit line/curve is found in the 2-dimension space and re-tranposed on the 1-dimension number line.
+  - Example - points on a 2-dimension space (x-y) is transformed to a 3-dimension space (x-y-z) using some functions. Best fit line/curve is found in the 3-dimension space and re-tranposed on the 2-dimension space.
+  - **Kernel Trick**
+    - This concept of transforming data points from n-dimension to (n+1)-dimension and back is computationally intensive and time-consuming. So, in practical cases, instead of explicitly performing the transformation for every data point, a **kernel function** is used. This function takes two data points as input and directly calculates their dot product in the higher-dimensional space without ever having to compute the coordinates of the points in that new space. Avoids the computational cost of transforming the entire dataset into a very high or even infinite-dimensional space, making the process much more efficient. 
+  - Types of Kernel function
+    - RBF (Radial Basis Function) ==> Most widely used
+    - Sigmoid
+    - Polynomial
+  

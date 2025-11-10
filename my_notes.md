@@ -203,4 +203,15 @@ score=accuracy_score(y_pred,y_test) ## 0.9166
     - RBF (Radial Basis Function) ==> Most widely used
     - Sigmoid
     - Polynomial
-  
+
+## K-NN K-Nearest Neighbours ##
+- Simplest of all algorithms. Used for both classfication & regression.
+- Concept : similar data points are located close to each other in a feature space and can be classified based on the proximity of their neighbors.
+- K = 5 (default)
+- For classification, plot existing data points. For any new data point, identify the K-nearest neighbours using distance formula. Out of those K-nearest neighbours, assign the majority class by count.
+- For regression, predict the value of the new data point by calculating the average of the values of the k neighbors.
+- Types of distance-
+  - Euclidian distance = Direct distance between two points. ==> sqrt((x2-x1)^2 + (y2-y1)^2)
+  - Manhattan distance = Distance traversed as though in Manhattan city blocks ==> abs(x2-x1) + abs(y2-y1)
+- Optimizing the algorithm:
+  - In a large dataset, it is time-consuming to calculate distances for every data point for a new data point to identify the k-neighbours. So, to reduce the time by half, **KD-Tree** or **Ball Tree** algorithm is applied 

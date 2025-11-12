@@ -228,3 +228,19 @@ score=accuracy_score(y_pred,y_test) ## 0.9166
 
 ## k-Means Clustering #
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/b08ea8ee-053d-4ac9-96e6-54540e6cd897" />
+
+**WCSS** : Within Cluster Sum of Squared distance (between data points in the cluster and the cluster's centroid)
+
+**Elbow Method**: 
+- Plot WCSS for different value of k. As k increases from 1 to number of datapoints, WCSS reduces towards 0.
+- For k = number of datapoints (i.e. each cluster has only one data point and the data point itself is the centroid) ==> WCSS = 0.
+- Starting with k=1, WCSS reduces quickly and after a certain k, it reduces slowly. This inflection point determines the "k" that should be set for the final model
+
+**k-Means++ to avoid Random Initialization trap**
+- If the initial centroids are randomly set, then the clustering output will not be consistent ==> **Random Initialization Trap**
+- To avoid this, k-Means++ algorithm is applied to set the initial centroids
+  1. First centroid: A data point is selected at random from the dataset to be the first centroid.
+  2. Subsequent centroids: For each remaining data point, the algorithm calculates the distance to the nearest centroid that has already been selected.
+  3. Weighted selection: The next centroid is chosen randomly from the remaining data points, with the probability of selection being proportional to its squared distance to the nearest existing centroid. This ensures that points that are far from the initial centroids are more likely to be selected as new centroids, which helps spread them out.
+  4. Repeat: Steps 2 and 3 are repeated until the desired number of centroids (\(k\)) has been selected.
+  5. Standard k-means: Once the initial centroids are chosen by the k-means++ method, the standard k-means clustering algorithm is applied to the data to form the final clusters. 

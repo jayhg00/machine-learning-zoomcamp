@@ -215,3 +215,16 @@ score=accuracy_score(y_pred,y_test) ## 0.9166
   - Manhattan distance = Distance traversed as though in Manhattan city blocks ==> abs(x2-x1) + abs(y2-y1)
 - Optimizing the algorithm:
   - In a large dataset, it is time-consuming to calculate distances for every data point for a new data point to identify the k-neighbours. So, to reduce the time by half, **KD-Tree** or **Ball Tree** algorithm is applied 
+
+# Unsupervised Learning #
+- No output (dependent) variable, y. All columns in dataset are the independent features X.
+- Used for identifying clusters/patterns which otherwise are not easily identified
+- Example - Customer segmentation, image compression, pattern recognition
+- Algorithms
+  - k-Means Clustering
+  - Hierarchical Clustering
+  - DBSCan Clustering
+  - Silhoutte Clustering
+
+## k-Means Clustering #
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/b08ea8ee-053d-4ac9-96e6-54540e6cd897" />

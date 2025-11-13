@@ -227,6 +227,8 @@ score=accuracy_score(y_pred,y_test) ## 0.9166
   - DBSCan Clustering
   - Silhoutte Clustering
 
+**NOTE: In all these algorithms, even when the input X has multiple features, we select any two important features only so that you can visualize the scatter plots & clusters for understanding. In real world apps, you will use all the important features (>2) and not necessarily visualize**
+
 ## k-Means Clustering #
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/b08ea8ee-053d-4ac9-96e6-54540e6cd897" />
 

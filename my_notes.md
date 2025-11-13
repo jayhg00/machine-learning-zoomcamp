@@ -258,4 +258,20 @@ Visualized using a DENDROGRAM tree-like structure. x-axis of DENDROGRAM are the 
 - bottom-up approach that starts with each data point as its own cluster and then merges the two closest clusters in a series of steps until only one cluster remains
 
 <img width="1840" height="730" alt="image" src="https://github.com/user-attachments/assets/dfcfdcc4-fce5-499f-8057-eef5af863715" />
+In above image, P2 & P3 are closest so group those two with two vertical lines whose height is equal to the Euclidean distance between them (0.5)
+
+<img width="1838" height="714" alt="image" src="https://github.com/user-attachments/assets/56c4fd71-9dc1-4ae9-9f56-c9354449bd78" />
+Then P5,P6 are closest so group them with height = Euclidean distance between them (0.8)
+
+<img width="1844" height="705" alt="image" src="https://github.com/user-attachments/assets/71ef79b5-9741-4641-8d3e-1647a5b32ece" />
+Then P1, P2-P3 cluster are closer so group them with height = Euclidean distance between them (0.85)
+
+<img width="1814" height="719" alt="image" src="https://github.com/user-attachments/assets/637da346-2b9b-4125-8c87-c1ce01437736" />
+Then, P4, P5-P6 cluster are closer so group them with height = Euclidean distance between them (0.85)
+
+<img width="1825" height="723" alt="image" src="https://github.com/user-attachments/assets/20629ee1-8d25-4536-b4ca-129538c7bd28" />
+Then, P1-P2-P3, P4-5-6 cluster are grouped to form one single cluster with height = Euclidean distance between them (2.7)
+
+
+
 

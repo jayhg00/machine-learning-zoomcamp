@@ -237,10 +237,25 @@ score=accuracy_score(y_pred,y_test) ## 0.9166
 - Starting with k=1, WCSS reduces quickly and after a certain k, it reduces slowly. This inflection point determines the "k" that should be set for the final model
 
 **k-Means++ to avoid Random Initialization trap**
-- If the initial centroids are randomly set, then the clustering output will not be consistent ==> **Random Initialization Trap**
+- If the initial centroids are randomly set whenever the K-means is run, then the clustering output will not be consistent across different runs ==> **Random Initialization Trap**
 - To avoid this, k-Means++ algorithm is applied to set the initial centroids
   1. First centroid: A data point is selected at random from the dataset to be the first centroid.
   2. Subsequent centroids: For each remaining data point, the algorithm calculates the distance to the nearest centroid that has already been selected.
   3. Weighted selection: The next centroid is chosen randomly from the remaining data points, with the probability of selection being proportional to its squared distance to the nearest existing centroid. This ensures that points that are far from the initial centroids are more likely to be selected as new centroids, which helps spread them out.
   4. Repeat: Steps 2 and 3 are repeated until the desired number of centroids (\(k\)) has been selected.
-  5. Standard k-means: Once the initial centroids are chosen by the k-means++ method, the standard k-means clustering algorithm is applied to the data to form the final clusters. 
+  5. Standard k-means: Once the initial centroids are chosen by the k-means++ method, the standard k-means clustering algorithm is applied to the data to form the final clusters.
+
+
+## Hierarchical Clustering ##
+Unsupervised machine learning algorithm that groups data into a tree of nested clusters
+Two types - 
+- Agglomerative (bottom to top approach)
+- Divisive (top to bottom approach)
+Visualized using a DENDROGRAM tree-like structure. x-axis of DENDROGRAM are the individual datapoints while y-axis is the distance (dissimilarity).
+
+
+### Agglomerative Hierarchical Clustering ###
+- bottom-up approach that starts with each data point as its own cluster and then merges the two closest clusters in a series of steps until only one cluster remains
+
+<img width="1840" height="730" alt="image" src="https://github.com/user-attachments/assets/dfcfdcc4-fce5-499f-8057-eef5af863715" />
+

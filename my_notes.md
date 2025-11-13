@@ -217,7 +217,8 @@ score=accuracy_score(y_pred,y_test) ## 0.9166
   - In a large dataset, it is time-consuming to calculate distances for every data point for a new data point to identify the k-neighbours. So, to reduce the time by half, **KD-Tree** or **Ball Tree** algorithm is applied 
 
 # Unsupervised Learning #
-- No output (dependent) variable, y. All columns in dataset are the independent features X.
+- **No EXPLICIT output (dependent) variable, y. All columns in dataset are the independent features X.**
+- **There is no train test split. The whole dataset is used to fit and predict the clusters. The predictions will be the output(dependent) variable** 
 - Used for identifying clusters/patterns which otherwise are not easily identified
 - Example - Customer segmentation, image compression, pattern recognition
 - Algorithms
